@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+// Функція для знаходження НСД
+int gcd(int a, int b) {
+  while (b != 0) {
+    int temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
+}
+
+// Функція для знаходження НСК
+int lcm(int a, int b) {
+  return (a * b) / gcd(a, b);
+}
+
+int main() {
+  // Зчитування кількості чисел
+  int p;
+  scanf("%d", &p);
+
+  if (p < 2 || p > 20) {
+    printf("Невірне значення p. p має бути в діапазоні від 2 до 20.\n");
+    return 1;
+  }
+
+  int numbers[p];
+  for (int i = 0; i < p; i++) {
+    scanf("%d", &numbers[i]);
+  }
+
+  // Обчислення НСК
+  int lcm_result = numbers[0];
+  for (int i = 1; i < p; i++) {
+    lcm_result = lcm(lcm_result, numbers[i]);
+  }
+
+  // Виведення НСК
+  printf("%d\n", lcm_result);
+
+  return 0;
+}
