@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+
+unsigned long long factorial(int n) {
+    if (n == 0) {
+        return 1;
+    }
+    unsigned long long result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    char word[15];  // Слово довжиною не більше 14 символів
+    printf("Введіть слово: ");
+    scanf("%s", word);
+
+    int length = strlen(word);
+    int freq[26] = {0};  // Частота кожної букви
+
+    
+    for (int i = 0; i < length; ++i) {
+        freq[word[i] - 'A']++;
+    }
+
+    
+    unsigned long long totalAnagrams = factorial(length);
+    for (int i = 0; i < 26; ++i) {
+        if (freq[i] > 1) {
+            totalAnagrams /= factorial(freq[i]);
+        }
+    }
+
+    
+    printf("Кількість  анаграм: %llu\n", totalAnagrams);
+
+    return 0;
+}
