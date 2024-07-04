@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+
+    int x1, y1, x2, y2;
+    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+
+    // Обчислення різниці координат
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+
+    // Обчислення довжини вектора
+    double length = sqrt(dx * dx + dy * dy);
+
+    // Виведення результату з точністю до шести знаків після коми
+    printf("%.6lf\n", length);
+
+    return 0;
+}
+
